@@ -1,4 +1,4 @@
-# Tutorial 2
+# Prática 2
 
 Praticando configurações de sistema na distribuição Linux Debian.
 
