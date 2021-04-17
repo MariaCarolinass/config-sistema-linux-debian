@@ -83,6 +83,60 @@ A última configuração é no arquivo `/etc/adduser.conf`, onde será adicionad
 
 Será editado a linha `QUOTAUSER` e adicionar o nome donald, entre as aspas e sem espaço.
 
+### Usuários e grupos
+
+Serão criados 5 usuários: margarida, patinhas, huguinho, zezinho e luizinho. Todos esses usuários vão se aplicar as restrições de cota de armazenamento do usuário principal donald. Abaixo os comandos para criar cada usuário:
+
+`# adduser margarida`
+
+`# adduser patinhas`
+ 
+`# adduser huguinho`
+
+`# adduser zezinho`
+
+`# adduser luizinho`
+
+Para verficar as cotas de todos os usuários:
+
+`# repquota -as`
+
+O arquivo `/etc/passwd` mostra os usuário criados:
+
+`# nano /etc/passwd`
+
+Agora, os usários serão divididos nos grupos “adultos” e “criancas”. Primeiro é preciso criar os dois grupos com os comandos abaixo:
+
+`# addgroup adultos`
+
+`# addgroup criancas`
+
+Os usuários foram divididos da seguinte forma:
+
+- Adultos: donald; margarida; patinhas.
+- Crianças: huguinho; zezinho; luizinho. 
+ 
+Para adiciona-lós aos seus respectivos grupos é digitado os comando abaixo:
+
+`# usermod -aG adultos donald`
+
+`# usermod -aG adultos margarida`
+
+`# usermod -aG adultos patinhas`
+
+`# usermod -aG criancas huguinho`
+
+`# usermod -aG criancas zezinho`
+
+`# usermod -aG criancas luizinho`
+
+
+O arquivo `/etc/groups` mostrar os usuários e grupos que foram criados, digitando o comando a seguir:
+
+`# nano /etc/groups`
+
+Também com o comando `groups <nome-do-usuario>` é possível verificar o grupo de cada um dos usuários.
+
 <div id='diretorios'/>
 
 ## Diretórios compartilhados
