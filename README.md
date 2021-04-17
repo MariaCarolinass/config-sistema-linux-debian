@@ -35,7 +35,9 @@ Durante a instalação do Debian foram definidas as configurações que o disco 
 |  Ponto de montagem  |         /         |       SWAP      | /home                    |
 |       Tamanho       |        8GB        |       1GB       | Espaço restante em disco |
 
-Ao terminar de configurar as partições do disco deverá escolher a opções "Finalizar particionamento e escrever mudanças no disco".
+Ao terminar de configurar as partições do disco deverá escolher a opções "Finalizar particionamento e escrever mudanças no disco". A imagem abaixo mostra como deve ser o resultado das mudanças:
+
+<img src="https://github.com/MariaCarolinass/config-sistema-linux-debian/blob/main/imagens/particaodisco.png" alt="Mudanças no disco" width="600" height="500"/>
 
 Uma **importante** configuração a se fazer é escolher o nome de usuário como "donald" que terá haver com os tópicos de usuários, grupos e permissões.
 
@@ -44,6 +46,10 @@ Finalizando a instalação do Debian, algumas opções deverão ser marcadas na 
 - Ambiente de área de trabalho no Debian; 
 - Xfce;
 - Utilitários de sistema padrão
+
+A imagem a seguir mostra as opções de software marcadas:
+
+<img src="https://github.com/MariaCarolinass/config-sistema-linux-debian/blob/main/imagens/softwares.png" alt="Opções marcadas" width="600" height="500"/>
 
 <div id='cotas'/>
 
@@ -57,6 +63,10 @@ Agora, é necessário definir onde será o controle de armazenamento. Vamos edit
 
 `# nano /etc/fstab`
 
+A imagem abaixo mostra o arquivo editado com as configurações citadas:
+
+<img src="https://github.com/MariaCarolinass/config-sistema-linux-debian/blob/main/imagens/quota.png" alt="Configuração ursquota" width="600" height="400"/>
+
 Após isso, é preciso atualizar as configurações que foram adicionadas, digitando o comando abaixo:
 
 `# mount -o remount /home`
@@ -67,11 +77,13 @@ Para finalizar as configurações no ponto de montagem `/home` é preciso digita
 
 `# quotaon /home`
 
-Cada usuário terá 1GB de restrição de cota “leve” e 1.1GB de restrição de cota “rígida” para utilizar. E sempre qualquer novo usuário criado terá essas mesmas restrições de cota. O comando a seguir foi definido as restrições de cota através do usuário principal `donald` definido durante a instalação do Linux - Debian:
+Cada usuário terá 1GB de restrição de cota “leve” e 1.1GB de restrição de cota “rígida” para utilizar. E sempre qualquer novo usuário criado terá essas mesmas restrições de cota. O comando a seguir define as restrições de cota através do usuário principal `donald` criado durante a instalação do Linux - Debian:
 
 `# edquota -u donald`
 
-Deverá ser editadas as linhas soft e hard as restrições que foram citadas.
+Deverá ser editadas as linhas soft e hard com as restrições de cota citadas. A imagem abaixo mostra as restrições adicionadas:
+
+<img src="https://github.com/MariaCarolinass/config-sistema-linux-debian/blob/main/imagens/restricoes.png" alt="Restrições adicionas" width="600" height="400"/>
 
 Caso queira verificar se ocorreu tudo certo:
 
@@ -81,7 +93,9 @@ A última configuração é no arquivo `/etc/adduser.conf`, onde será adicionad
 
 `# nano /etc/adduser.conf`
 
-Será editado a linha `QUOTAUSER` e adicionar o nome donald, entre as aspas e sem espaço.
+Será editado a linha `QUOTAUSER`, nela vamos adicionar o nome donald entre as aspas e sem espaço, como mostra a imagem abaixo:
+
+<img src="https://github.com/MariaCarolinass/config-sistema-linux-debian/blob/main/imagens/config-usuario.png" alt="Donald adicionado" width="500" height="400"/>
 
 ### Usuários e grupos
 
@@ -101,9 +115,17 @@ Para verficar as cotas de todos os usuários:
 
 `# repquota -as`
 
+A imagem abaixo mostra o resultado do comando `repquota -as`:
+
+<img src="https://github.com/MariaCarolinass/config-sistema-linux-debian/blob/main/imagens/usuarios-criados.png" alt="Resultado do comando repquota" width="700" height="300"/>
+
 O arquivo `/etc/passwd` mostra os usuário criados:
 
 `# nano /etc/passwd`
+
+Abaixo a imagem exibir o conteúdo do arquivo `/etc/passwd`:
+
+<img src="https://github.com/MariaCarolinass/config-sistema-linux-debian/blob/main/imagens/usuarios.png" alt="Arquivo /etc/passwd" width="500" height="400"/>
 
 Agora, os usários serão divididos nos grupos “adultos” e “criancas”. Primeiro é preciso criar os dois grupos com os comandos abaixo:
 
@@ -135,7 +157,13 @@ O arquivo `/etc/groups` mostrar os usuários e grupos que foram criados, digitan
 
 `# nano /etc/groups`
 
-Também com o comando `groups <nome-do-usuario>` é possível verificar o grupo de cada um dos usuários.
+A imagem adiante mostra o resultado do comando digitado: 
+
+<img src="https://github.com/MariaCarolinass/config-sistema-linux-debian/blob/main/imagens/grupos-criados.png" alt="Grupos criados" width="500" height="400"/>
+
+Também com o comando `groups <nome-do-usuario>` é possível verificar o grupo de cada um dos usuários. Resultado do comando groups na imagem a seguir:
+
+<img src="https://github.com/MariaCarolinass/config-sistema-linux-debian/blob/main/imagens/groups.png" alt="Resultado do comando groups" width="700" height="300"/>
 
 <div id='diretorios'/>
 
@@ -183,3 +211,7 @@ Para adicionar as permissões definidas na tabela anterior, será digitado os se
 Verificando se as permissões foram realizadas:
 
 `# ls -l`
+
+A imagem a seguir mostra os resultados das permissões configuradas:
+
+<img src="https://github.com/MariaCarolinass/config-sistema-linux-debian/blob/main/imagens/permissoes.png" alt="Resultado das perimissões" width="700" height="100"/>
