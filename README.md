@@ -140,3 +140,46 @@ Também com o comando `groups <nome-do-usuario>` é possível verificar o grupo 
 <div id='diretorios'/>
 
 ## Diretórios compartilhados
+
+Por fim, vamos práticar sobre permissões de arquivos. Serão criados dois diretórios de uso compartilhado, que ficarão salvos no diretório `/compartilhado` criado no ponto de montagem “/”. O comando abaixo cria o diretório:
+
+`# mkdir compartilhado`
+
+E para entrar no diretório `compartilhado`: 
+
+`# cd compartilhado`
+
+Dentro dele serão criados os diretórios adultos e criancas:
+
+`# mkdir adultos`
+
+`# mkdir criancas`
+
+Em seguida, os comandos abaixo serão utilizados para adicionar os grupos que antes foram criados nos diretórios compartilhados que acabamos de criar:
+
+`# chgrp adultos adultos`
+
+`# chgrp criancas criancas`
+
+Esses diretórios terão duas permissões diferentes para cada um, que estão descritas na tabela abaixo:
+
+|        Diretório        |                 Permissão 1                 |                        Permissão 2                       |
+|:-----------------------:|:-------------------------------------------:|:--------------------------------------------------------:|
+|  /compartilhado/adultos | Usuários do grupo adultos podem ler e escrever dentro desse diretório | Usuários que não pertencem ao grupo “adultos” não podem ler, escrever ou executar esse diretório    |
+| /compartilhado/criancas | Usuários do grupo crianças podem ler e escrever dentro desse diretório | Usuários que não pertencem ao grupo “crianças” podem ler e executar o diretório, mas não podem escrever |
+
+Para adicionar as permissões definidas na tabela anterior, será digitado os seguintes comandos:
+
+`# chmod a-rwx adultos`
+
+`# chmod a-rwx criancas`
+
+`# chmod g+rwx adultos`
+
+`# chmod g+rwx criancas`
+
+`# chmod o+rx criancas`
+
+Verificando se as permissões foram realizadas:
+
+`# ls -l`
