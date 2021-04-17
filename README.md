@@ -27,6 +27,24 @@ As configurações no Linux - Debian serão realizadas na máquina virtual criad
 
 ## Instalação da distribuição Linux Debian
 
+Durante a instalação do Debian foram definidas as configurações que o disco da máquina terá. O disco será divido em três partições descritas na tabela abaixo:
+
+|                     | Partição primária | Partição Lógica |      Partição Lógica     |
+|:-------------------:|:-----------------:|:---------------:|:------------------------:|
+| Sistema de arquivos |        Ext4       |       SWAP      |           Ext4           |
+|  Ponto de montagem  |         /         |       SWAP      | /home                    |
+|       Tamanho       |        8GB        |       1GB       | Espaço restante em disco |
+
+Ao terminar de configurar as partições do disco deverá escolher a opções "Finalizar particionamento e escrever mudanças no disco".
+
+Uma **importante** configuração a se fazer é escolher o nome de usuário como "donald" que terá haver com os tópicos de usuários, grupos e permissões.
+
+Finalizando a instalação do Debian, algumas opções deverão ser marcadas na etapa de seleção de software, são elas: 
+
+- Ambiente de área de trabalho no Debian; 
+- Xfce;
+- Utilitários de sistema padrão
+
 <div id='cotas'/>
 
 ## Definição de cotas de armazenamento para os usuários
