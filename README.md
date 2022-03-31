@@ -21,7 +21,7 @@ As configurações no Linux - Debian serão realizadas na máquina virtual criad
 - Tipo de disco VDI;
 - Tipo de alocação Dinamicamente Alocado
 
-[A prática 1 descreve como criar uma máquina virtual e instalar o Linux - Debian](https://github.com/MariaCarolinass/config-servidor-apache2/edit/main/README.md)
+[A prática 1 descreve como criar uma máquina virtual e instalar o Linux - Debian](https://github.com/MariaCarolinass/config-servidor-apache2)
 
 <div id='debian'/>
 
